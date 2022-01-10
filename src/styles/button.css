@@ -1,0 +1,17 @@
+.button {
+    background-color: rgb(15, 175, 175);
+    border: 1px solid transparent;
+    appearance: none;
+    color: white;
+    padding: 1em;
+    font-size: 1.2rem;
+    margin: 1em;
+    border-radius: 15px;
+    transition: all 0.2s linear;
+}
+
+.button:hover {
+    background-color: #333;
+    border: 1px solid rgb(15, 175, 175);
+    transform: scale(1.1);
+}
