@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/button.css'
+import { themeContext } from '../themeContext'
 export default class Button extends React.Component {
     // utlizando bind
 
@@ -9,11 +10,10 @@ export default class Button extends React.Component {
     }
     handleClick(message, event) {
         this.showMessage(message)
-        console.dir(event.target.textContent)
     }
 
     showMessage(message) {
-        console.log('The message: ', message)
+        alert(message)
     }
 
     // Campos publicos
@@ -24,14 +24,13 @@ export default class Button extends React.Component {
 
     render() {
         return (
-            <>
-                {/* los parametros de los componentes se pasan como props en el constructor
-                    <Button text="Click me" />
-                    los parametros como event se pasan automaticamente utlizando bind} */}
-                <button className="button" onClick={this.handleClick.bind(this, 'hola')}>
-                    {this.props.text}
-                </button>
-            </>
+            <themeContext.Consumer>
+                {(theme) => (
+                    <button className={`button ${theme}`} onClick={this.handleClick.bind(this, 'hola')}>
+                        {this.props.text}
+                    </button>
+                )}
+            </themeContext.Consumer>
         )
     }
 }

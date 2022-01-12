@@ -3,13 +3,24 @@
     padding: 0;
     margin: 0;
     text-align: left;
+    background-color: transparent;
 }
 
 .listItem {
     padding: 0.5em;
     margin: 0.5em;
-    background-color: cadetblue;
 
     border-radius: 0.5em;
     font-size: 1.1rem;
+    transition: all 1s ease;
+}
+
+.theme-dark .listItem {
+    background-color: cadetblue;
+    color: #fff;
+}
+
+.theme-light .listItem {
+    background-color: #fff;
+    color: #000;
 }

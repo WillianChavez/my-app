@@ -1,8 +1,6 @@
 .button {
-    background-color: rgb(15, 175, 175);
     border: 1px solid transparent;
     appearance: none;
-    color: white;
     padding: 1em;
     font-size: 1.2rem;
     margin: 1em;
@@ -11,7 +9,15 @@
 }
 
 .button:hover {
-    background-color: #333;
-    border: 1px solid rgb(15, 175, 175);
     transform: scale(1.1);
+}
+
+.theme-dark {
+    background-color: rgb(15, 175, 175);
+    color: #fff;
+}
+
+.theme-light {
+    background-color: #fff;
+    color: #000;
 }

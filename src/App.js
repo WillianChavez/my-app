@@ -4,8 +4,23 @@ import Counter from './components/counter.js'
 import Timer from './components/timer.js'
 import Toggle from './components/toggle.js'
 import List from './components/list.js'
+import { themes, themeContext, tooglerContext } from './themeContext.js'
+
 import './styles/App.css'
 export default class App extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            theme: themes.dark,
+            toggleTheme: () => {
+                this.setState((state) => ({
+                    theme: state.theme === themes.dark ? themes.light : themes.dark,
+                }))
+            },
+        }
+    }
+
     render() {
         const numbers = [
             { id: 1, value: 'one' },
@@ -19,13 +34,19 @@ export default class App extends React.Component {
             <div className="App">
                 <h1>Hello, world!</h1>
                 <p>This is my first React app.</p>
-                <Button text="Click me" />
-                <Button text="Double Click me" />
-                <Counter />
+                <themeContext.Provider value={this.state.theme}>
+                    <tooglerContext.Provider value={this.state.toggleTheme}>
+                        <Toggle />
+                    </tooglerContext.Provider>
+
+                    <Button text="Click me" />
+                    <Button text="Double Click me" />
+
+                    <Counter />
+
+                    <List numbers={numbers} />
+                </themeContext.Provider>
                 <Timer />
-                <Timer />
-                <Toggle />
-                <List numbers={numbers} />
             </div>
         )
     }

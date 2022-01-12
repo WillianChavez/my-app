@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/button.css'
+import { themeContext } from '../themeContext'
 
 // export default function Counter() {
 //     const [count, setCount] = React.useState(0)
@@ -31,12 +32,16 @@ export default class Counter extends React.Component {
 
     render() {
         return (
-            <div>
-                <p>You clicked {this.state.count} times</p>
-                <button onClick={this.handleClick} className="button">
-                    Counter
-                </button>
-            </div>
+            <themeContext.Consumer>
+                {(theme) => (
+                    <div>
+                        <p>You clicked {this.state.count} times</p>
+                        <button onClick={this.handleClick} className={`button ${theme}`}>
+                            Counter
+                        </button>
+                    </div>
+                )}
+            </themeContext.Consumer>
         )
     }
 }

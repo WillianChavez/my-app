@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/button.css'
+import { themeContext, tooglerContext } from '../themeContext'
 export default class Toggle extends React.Component {
     constructor(props) {
         super(props)
@@ -17,11 +18,17 @@ export default class Toggle extends React.Component {
 
     render() {
         return (
-            <div>
-                <button className="button" onClick={this.handleClick}>
-                    {this.state.isToggleOn ? 'ON' : 'OFF'}
-                </button>
-            </div>
+            <themeContext.Consumer>
+                {(theme) => (
+                    <tooglerContext.Consumer>
+                        {(toggleTheme) => (
+                            <button className={`button ${theme}`} onClick={toggleTheme}>
+                                toogle backgorund color
+                            </button>
+                        )}
+                    </tooglerContext.Consumer>
+                )}
+            </themeContext.Consumer>
         )
     }
 }
