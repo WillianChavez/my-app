@@ -12,7 +12,11 @@
 
     border-radius: 0.5em;
     font-size: 1.1rem;
-    transition: all 1s ease;
+    transition: all 0.5s ease;
+    border: 3px solid transparent;
+}
+.listItem--selected {
+    border: 3px solid orange;
 }
 
 .theme-dark .listItem {
@@ -21,6 +25,6 @@
 }
 
 .theme-light .listItem {
-    background-color: #fff;
+    background-color: rgb(194, 193, 193);
     color: #000;
 }

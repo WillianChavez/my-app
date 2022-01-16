@@ -1,34 +1,22 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 
-export default class Timer extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            date: new Date(),
+export function Timer() {
+    const [time, setTime] = useState(new Date())
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setTime(new Date())
+        }, 1000)
+
+        return () => {
+            clearInterval(interval)
         }
-    }
+    }, [time])
 
-    tick() {
-        this.setState({
-            date: new Date(),
-        })
-    }
-
-    // life cycle methods
-    componentDidMount() {
-        this.timerID = setInterval(() => this.tick(), 1000)
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timerID)
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>Timer</h1>
-                <p>Time: {this.state.date.toLocaleTimeString()}</p>
-            </div>
-        )
-    }
+    return (
+        <div>
+            <h1>Timer</h1>
+            <p>Time: {time.toLocaleTimeString()}</p>
+        </div>
+    )
 }

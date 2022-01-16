@@ -1,9 +1,10 @@
 import React from 'react'
 import Button from './components/button.js'
-import Counter from './components/counter.js'
-import Timer from './components/timer.js'
+import { Counter } from './components/counter.js'
+import { Timer } from './components/timer.js'
 import Toggle from './components/toggle.js'
 import List from './components/list.js'
+import { ModalContainer } from './components/modal.js'
 import { themes, themeContext, tooglerContext } from './themeContext.js'
 
 import './styles/App.css'
@@ -35,12 +36,14 @@ export default class App extends React.Component {
                 <h1>Hello, world!</h1>
                 <p>This is my first React app.</p>
                 <themeContext.Provider value={this.state.theme}>
+                    <ModalContainer />
+
                     <tooglerContext.Provider value={this.state.toggleTheme}>
                         <Toggle />
                     </tooglerContext.Provider>
 
-                    <Button text="Click me" />
-                    <Button text="Double Click me" />
+                    <Button handleClick={() => alert('show message')}>Click me</Button>
+                    <Button handleClick={() => alert('show message')}>Double Click</Button>
 
                     <Counter />
 
