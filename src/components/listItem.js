@@ -1,23 +1,16 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import '../styles/list.css'
 
-export default class ListItem extends React.Component {
-    constructor(props) {
-        super(props)
-        this.ref = React.createRef()
+export default function ListItem({ children }) {
+    const ref = useRef()
 
-        this.handleClick = this.handleClick.bind(this)
+    const handleClick = () => {
+        ref.current.classList.toggle('listItem--selected')
     }
 
-    handleClick() {
-        this.ref.current.classList.toggle('listItem--selected')
-    }
-
-    render() {
-        return (
-            <li className="listItem" ref={this.ref} onClick={this.handleClick}>
-                {this.props.value}
-            </li>
-        )
-    }
+    return (
+        <li className="listItem" ref={ref} onClick={handleClick}>
+            {children}
+        </li>
+    )
 }

@@ -1,8 +1,11 @@
-import React from 'react'
-import { tooglerContext } from '../themeContext'
+import React, { useContext } from 'react'
+import { tooglerContext, themeContext } from '../themeContext'
 import Button from './button'
-export default class Toggle extends React.Component {
-    render() {
-        return <tooglerContext.Consumer>{(toggleTheme) => <Button handleClick={toggleTheme}>Toggle Theme</Button>}</tooglerContext.Consumer>
-    }
+export default function Toggle() {
+    const tooglerFunction = useContext(tooglerContext)
+    const theme = useContext(themeContext)
+
+    const text = theme === 'theme-dark' ? 'Dark' : 'Light'
+
+    return <Button handleClick={tooglerFunction}>{text}</Button>
 }
